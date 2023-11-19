@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('telefono')->nullable();
             $table->string('direccion')->nullable();
             $table->string('numIdentidad')->nullable();
-            $table->unsignedBigInteger('carrera_id');
+            $table->unsignedBigInteger('carrera_id')->nullable();
             $table->foreign('carrera_id')->references('id')->on('carreras');
             $table->timestamps();
         });

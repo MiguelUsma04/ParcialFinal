@@ -9,18 +9,22 @@ class Estudiante extends Model
 {
     use HasFactory;
 
+
+    protected $table = 'estudiantes';
     protected $fillable = [
-        
+        'id',
         'nombre',
         'apellido',
         'email',
         'telefono',
-        'carrera'
+        'direccion',
+        'numIdentidad',
+        'carrera_id',
 
     ];
 
-    public function carreras(){
-        return $this->belongsToMany(Carrera::class);
+    public function carrera(){
+        return $this->belongsTo(Carrera::class,'carrera_id');
     }
         
         

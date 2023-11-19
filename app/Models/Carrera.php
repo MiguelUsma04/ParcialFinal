@@ -10,13 +10,13 @@ class Carrera extends Model
     use HasFactory;
 
     protected $fillable = [
-        
+        'id',
         'nombre',
         'descripcion',
         
     ];
 
-    public function carreras(){
-        return $this->belongsToMany(Estudiante::class);
+    public function estudiantes(){
+        return $this->hasMany(Estudiante::class);
     }
 }

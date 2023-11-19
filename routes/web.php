@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\EstudianteController;
+use App\Models\Estudiante;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
     // Route::get('/carreras', [CarreraController::class, 'index'])->name('carrera.index');
     Route::resource('carrera',CarreraController::class);
+    Route::resource('estudiante',EstudianteController::class);
 });
 
 
