@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Carrera;
 use Illuminate\Http\Request;
 
 class CarreraController extends Controller
@@ -11,7 +11,10 @@ class CarreraController extends Controller
      */
     public function index()
     {
-        //
+        $carreras = Carrera::all();
+
+        return view('carrera.index', compact('carreras'));
+        
     }
 
     /**
@@ -19,7 +22,7 @@ class CarreraController extends Controller
      */
     public function create()
     {
-        //
+        return view('carrera.create');
     }
 
     /**
@@ -27,7 +30,18 @@ class CarreraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required|string|max:50',
+            'descripcion' => 'required|string',
+        ]);
+
+        $carrera = Carrera::create([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            
+        ]);
+
+        return redirect()->route('carrera.index')->with('success', 'Carrera creado con éxito');
     }
 
     /**
@@ -41,24 +55,40 @@ class CarreraController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Carrera $carrera)
     {
-        //
+        $data = compact('carrera');
+
+        return view('carrera.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Carrera $carrera)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required|unique:carreras,nombre,'.$carrera->id,
+            'descripcion' => 'required|string',
+         
+        ]);
+
+        $carrera->update([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+ 
+        ]);
+
+        return redirect()->route('carrera.index')->with('success', 'Carrera actualizado con éxito');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Carrera $carrera)
     {
-        //
+        $carrera->delete();
+
+        return redirect()->route('carrera.index')->with('success', 'Carrera eliminado con éxito');
     }
 }
