@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\API\CarreraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-
-    Route::get('/carreras', [CarreraController::class, 'index'])->name('carrera.index');
-
+    
 });
+
+Route::apiResource('carrera' , CarreraController::class);
