@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     
 });
 
-Route::apiResource('carrera' , CarreraController::class);
+Route::apiResource('carreras' , CarreraController::class);
