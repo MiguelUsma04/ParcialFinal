@@ -14,6 +14,7 @@ class CarreraController extends Controller
         $carreras = Carrera::all();
 
         return view('carrera.index', compact('carreras'));
+        // return json_encode(['carreras'=>$carreras]);
         
     }
 
@@ -42,6 +43,7 @@ class CarreraController extends Controller
         ]);
 
         return redirect()->route('carrera.index')->with('success', 'Carrera creado con éxito');
+        // return json_encode(['carrera'=>$carrera]);
     }
 
     /**

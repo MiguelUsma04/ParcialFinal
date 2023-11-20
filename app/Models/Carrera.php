@@ -16,6 +16,8 @@ class Carrera extends Model
         
     ];
 
+    // public $timestamps = false;
+
     public function estudiantes(){
         return $this->hasMany(Estudiante::class);
     }
