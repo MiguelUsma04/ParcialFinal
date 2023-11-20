@@ -9,7 +9,7 @@
     <div class="py-2">
 
         <div class="flex justify-start">
-            <a href="{{ route('carrera.index') }}" class="btn-primary">
+            <a href="{{ route('carrera.index') }}" class="ml-5 bg-blue-400 p-2 rounded-xl text-white">
 
                 Regresar
 
@@ -34,7 +34,7 @@
         </div>
 
         <div class="flex justify-start py-2">
-            {{ Aire::submit('Crear')->class('bg-green-500 text-black') }}
+            {{ Aire::submit('Crear')->class('bg-green-500 text-white') }}
         </div>
 
         {{ Aire::close() }}

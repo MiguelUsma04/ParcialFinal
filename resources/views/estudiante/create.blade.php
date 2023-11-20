@@ -39,7 +39,7 @@
         </div>
 
         <div class="flex justify-start py-2">
-            {{ Aire::submit('Crear')->class('bg-green-500 text-black') }}
+            {{ Aire::submit('Crear')->class('bg-green-500 text-white') }}
         </div>
 
         {{ Aire::close() }}
